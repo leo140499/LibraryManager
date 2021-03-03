@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Themes</title>
+    <link th:href="@{/css/themesandAuthors.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="topnav">
+    <a href="/api/library/all">Libraries</a>
+    <a href="/api/books/all">Books</a>
+    <a href="/api/clients/all">Clients</a>
+    <a href="/api/authors/all">Authors</a>
+    <a class="active" href="/api/bt/all">Themes</a>
+</div>
+    <div class="form">
+    <h1>Themes</h1>
+    <br>
+    <br>
+        <form action="/api/bt/createTheme" th:object="${addTheme}" method="post" id="btForm">
+            <label>Title</label>
+            <input type="text" placeholder="Theme Name" th:value="${addTheme.description}" name="description" required/>
+            <br>
+            <br>
+            <input class="btnSave" type="submit" value="Save">
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

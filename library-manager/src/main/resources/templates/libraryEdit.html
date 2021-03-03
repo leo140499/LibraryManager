@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Details</title>
+    <link th:href = "@{/css/details.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="topnav">
+    <h1>Library Details</h1>
+</div>
+
+<br>
+<br>
+<div class="table">
+<div class="table2">
+    <h2>Books</h2>
+<table>
+    <tr>
+        <th>Book Isbn</th>
+        <th>Book Title</th>
+    </tr>
+
+    <tr th:each="book:${library.book}">
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.title}"></td>
+    </tr>
+    <br>
+    <br>
+</table>
+</div>
+<div class="table3">
+<h2>Clients</h2>
+<table>
+    <tr>
+        <th class="th2">Client id</th>
+        <th class="th2">Client Name</th>
+        <th class="th2">Gender</th>
+    </tr>
+
+    <tr th:each="client:${library.clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.name}"></td>
+        <td th:text="${client.gender}"></td>
+    </tr>
+    <br>
+    <br>
+</table>
+</div>
+</div>
+<br>
+<br>
+    <div class="form">
+        <div class="objectDescription">
+            <h1>Details</h1>
+            <b>Id: </b> <span th:text="${library.id}"></span>
+            <br><b>Name: </b> <span th:text="${library.name}"></span>
+            <br><b>Address: </b> <span th:text="${library.address}"></span>
+        </div>
+    <form th:action="@{/api/library/editLib/(libId=${library.id})}" method="post">
+        <label><b> Select Books</b></label>
+        <select name="isbn" required>
+            <option value="">Choose books</option>
+            <option th:each="book : ${availableBooks}"
+                    th:value="${book.isbn}"
+                    th:text="${book.title}">
+            </option>
+        </select>
+        <input class="btnSave" type="submit" value="Save Book" />
+    </form>
+<br>
+<br>
+<form th:action="@{/api/library/registerClient/(libId=${library.id})}" method="post">
+
+    <label><b> Select Clients</b></label>
+    <select name="id" required>
+        <option value="">Choose Clients</option>
+        <option th:each="client : ${availableClients}"
+                th:value="${client.id}"
+                th:text="${client.name}">
+        </option>
+    </select>
+    <input class="btnSave" type="submit" value="Save Client" />
+</form>
+        <br>
+        <br>
+        <a class="linkReturn" href="/api/library/all">Return</a>
+    </div>
+
+</body>
+</html>

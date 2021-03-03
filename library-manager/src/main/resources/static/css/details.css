@@ -1,0 +1,133 @@
+.topnav {
+    font-family: Calibri;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    text-align: center;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: Calibri;
+    background-color: #d0d0d0;
+}
+
+
+.linkReturn{
+    padding: 6px 8px;
+    font-size: 15px;
+    background-color: #b30000;
+    text-decoration: none;
+    color: white;
+    border-color: transparent;
+    border-radius: 6px;
+    transition-duration: 0.4s;
+    alignment: center;
+    margin-top: 100px;
+    overflow:hidden;
+
+}
+
+.linkReturn:hover{
+    background-color: #db3939;
+    color: white;
+}
+
+.btnSave{
+    padding: 6px 8px;
+    background-color: #4CAF50;
+    color: white;
+    border-color: transparent;
+    border-radius: 6px;
+    transition-duration: 0.4s;
+}
+
+.btnSave:hover{
+    background-color: #63ff63;
+    color: white;
+}
+
+.btnDelete{
+    padding: 6px 8px;
+    background-color: #b30000;
+    color: white;
+    border-color: transparent;
+    border-radius: 6px;
+    transition-duration: 0.4s;
+}
+
+.btnDelete:hover{
+    background-color: #db3939;
+    color: white;
+}
+
+.table{
+    float:right;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+
+
+
+}
+
+table{
+
+    font-size: 25px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+.form{
+    float:left;
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    border-collapse: collapse;
+    background-color: #d0d0d0;
+}
+
+.table2{
+    float: left;
+    font-size: 25px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 50%;
+
+}
+
+.table3{
+    float: right;
+    font-size: 25px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 50%;
+}
+
+td{
+    padding: 10px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+}
+
+.th2{
+    background-color: #4caf9b;
+    color: white;
+    padding: 10px;
+}
+
+tr:nth-child(even) {background-color: #d2d2d2;}
+
+h2{
+    font-family: Calibri;
+    color: #dddddd;
+    margin: 0px;
+}

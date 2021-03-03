@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href = "@{/css/details.css}" rel="stylesheet">
+    <title> Book Details</title>
+</head>
+<body>
+<div class="topnav">
+    <h1>Book Details</h1>
+</div>
+
+<div class="table">
+    <div class="table2">
+<table>
+    <tr>
+        <th>Author Id</th>
+        <th>Name</th>
+    </tr>
+
+    <tr th:each="author : ${bookId.authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+    </tr>
+    </table>
+    </div>
+    <div class="table3">
+    <table>
+
+        <tr>
+            <th>Theme Id</th>
+            <th>Description</th>
+        </tr>
+
+    <tr th:each="theme : ${bookId.bookThemes}">
+        <td th:text="${theme.id}"></td>
+        <td th:text="${theme.description}"></td>
+    </tr>
+    </table>
+    </div>
+</div>
+<br>
+<br>
+    <div class="form">
+        <div class="objectDescription">
+            <h1>Details</h1>
+            <b>ISBN: </b> <span th:text="${bookId.isbn}"></span>
+            <br><b>Title: </b> <span th:text="${bookId.title}"></span>
+        </div>
+    <form th:action="@{/api/books/registerDetails/(isbn=${bookId.isbn})}" method="post">
+        <label><b>Authors</b></label>
+        <select name="id" required>
+            <option value="">Choose Author</option>
+            <option th:each="auth : ${authors}"
+                    th:value="${auth.id}"
+                    th:text="${auth.name}"></option>
+        </select>
+        <input class="btnSave" type="submit" value="Select Author" />
+    </form>
+    <br>
+    <form th:action="@{/api/books/registerTheme/(isbn=${bookId.isbn})}" method="post">
+        <label><b>Theme</b></label>
+        <select name="id" required>
+            <option value="">Choose Theme</option>
+            <option th:each="bt : ${bookThemes}"
+                    th:value="${bt.id}"
+                    th:text="${bt.description}"></option>
+        </select>
+        <input class="btnSave" type="submit" value="Select Themes" />
+    </form>
+<br>
+<br>
+    <a class="linkReturn" href="/api/books/all">Return</a>
+    </div>
+</body>
+</html>

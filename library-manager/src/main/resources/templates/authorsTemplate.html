@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+    <link th:href="@{/css/themesandAuthors.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="topnav">
+    <a href="/api/library/all">Libraries</a>
+    <a href="/api/books/all">Books</a>
+    <a href="/api/clients/all">Clients</a>
+    <a class="active" href="/api/authors/all">Authors</a>
+    <a href="/api/bt/all">Themes</a>
+</div>
+<div class="form">
+<h1>Authors Register</h1>
+<br>
+<br>
+
+<form action="/api/authors/create" th:object="${newAuthor}" method="post" id="authorForm">
+    <label>Title</label>
+    <input type="text" placeholder="Author Name" th:value="${newAuthor.name}" name="name" required/>
+    <br>
+    <br>
+    <input class="btnSave" type="submit" value="Save">
+
+</form>
+</div>
+
+</div>
+</body>
+</html>

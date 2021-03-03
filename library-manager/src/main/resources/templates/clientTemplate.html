@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+<div class="topnav">
+    <a href="/api/library/all">Libraries</a>
+    <a href="/api/books/all">Books</a>
+    <a class="active" href="/api/clients/all">Clients</a>
+    <a href="/api/authors/all">Authors</a>
+    <a href="/api/bt/all">Themes</a>
+</div>
+<div class="form">
+<h1>Clients Register</h1>
+<br>
+<br>
+<form action="/api/clients/create" th:object="${newClient}" method="post" id="ClientForm">
+    <label>Title</label>
+    <input type="text" placeholder="Name" th:value="${newClient.name}" name="name" required/>
+    <input type="text" placeholder="Gender" th:value="${newClient.gender}" name="gender" required/>
+    <br>
+    <br>
+    <input class="btnSave" type="submit" value="Save" />
+</form>
+</div>
+<div class="table">
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th></th>
+
+    </tr>
+
+    <tr th:each="client : ${getClients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.name}"></td>
+        <td th:text="${client.gender}"></td>
+        <td> <a class="linkDetails" th:href="@{'/api/clients/details/' + ${client.id}}">Details</a></td>
+    </tr>
+</table>
+</div>
+</div>
+</body>
+
+</html>

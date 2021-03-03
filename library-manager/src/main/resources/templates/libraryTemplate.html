@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Libraries</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="topnav">
+    <a class="active" href="/api/library/all">Libraries</a>
+    <a href="/api/books/all">Books</a>
+    <a href="/api/clients/all">Clients</a>
+    <a href="/api/authors/all">Authors</a>
+    <a href="/api/bt/all">Themes</a>
+</div>
+
+<div class="form">
+<h1>Library Register</h1>
+<br>
+<br>
+<form action="/api/library/create" th:object="${newLibrary}" method="post" id="authorForm">
+    <label>Title</label>
+    <input type="text" placeholder="Library Name" th:value="${newLibrary.name}" name="name" required/>
+    <label>Address</label>
+    <input type="text" placeholder="Library Address" th:value="${newLibrary.address}" name="address" required/>
+    <br>
+    <br>
+    <input class="btnSave" type="submit" value="Save" />
+</form>
+</div>
+<div class="table">
+<table>
+    <tr>
+        <th >Id</th>
+        <th >Name</th>
+        <th>Address</th>
+        <th></th>
+    </tr>
+
+    <tr th:each="lib : ${getLibraries}">
+        <td th:text="${lib.id}"></td>
+        <td th:text="${lib.name}"></td>
+        <td th:text="${lib.address}"></td>
+        <td> <a class="linkDetails" th:href="@{'/api/library/details/' + ${lib.id}}">Details</a></td>
+    </tr>
+</table>
+</div>
+</div>
+</body>

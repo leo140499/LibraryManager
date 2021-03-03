@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Details</title>
+    <link th:href = "@{/css/details.css}" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="topnav">
+    <h1>Client Details</h1>
+</div>
+
+
+<div class="table">
+
+    <div class="table2">
+        <h2>Books</h2>
+<table>
+    <tr>
+        <th>Book Isbn</th>
+        <th>Book Title</th>
+    </tr>
+
+    <tr th:each="bk:${clientId.book}">
+        <td th:text="${bk.isbn}"></td>
+        <td th:text="${bk.title}"></td>
+    </tr>
+    </table>
+    </div>
+
+
+
+    <div class="table3">
+        <h2>Libraries</h2>
+<table>
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+</tr>
+
+<tr th:each="lc:${clientId.libraries}">
+    <td th:text="${lc.id}"></td>
+    <td th:text="${lc.name}"></td>
+</tr>
+</table>
+    </div>
+</div>
+
+
+<div class="form">
+
+    <div class="objectDescription">
+        <h1>Details</h1>
+        <b>Client Id: </b> <span th:text="${clientId.id}"></span>
+        <br><b>Name: </b> <span th:text="${clientId.name}"></span>
+        <br><b>Gender: </b> <span th:text="${clientId.gender}"></span>
+    </div>
+    <br>
+    <br>
+<form th:action="@{/api/clients/registerDetails/(id=${clientId.id})}" method="post">
+    <label><b> Select Books</b></label>
+    <select name="isbn" required>
+        <option value="">Choose books</option>
+        <option th:each="book : ${books}"
+                th:value="${book.isbn}"
+                th:text="${book.title}">
+        </option>
+    </select>
+    <input class="btnSave" type="submit" value="Save" />
+</form>
+
+<br>
+<br>
+
+
+<form th:action="@{/api/clients/deleteBooks/(id=${clientId.id})}" method="post">
+    <label><b> Delete Books</b></label>
+    <select name="isbn" required>
+        <option value="">Choose books</option>
+        <option th:each="book : ${cb}"
+                th:value="${book.isbn}"
+                th:text="${book.title}">
+        </option>
+    </select>
+    <input class="linkReturn" type="submit" value="Delete Book" />
+</form>
+
+<br>
+<br>
+
+
+<form th:action="@{/api/clients/delete/(id=${clientId.id})}" method="post">
+    <input class="linkReturn" type="submit" value="Delete Client" />
+</form>
+    <br>
+    <br>
+    <a class="linkReturn" href="/api/clients/all">Return</a>
+</div>
+</body>
+</html>
